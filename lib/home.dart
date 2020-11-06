@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    crudMethods.getData().then((result){
+    crudMethods.getData().then((result){            
       setState(() {
         blogStream = result;
       });
@@ -58,34 +58,37 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
+  return Scaffold(
+    appBar: AppBar(
         title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-          Text("Flutter",style: TextStyle(fontSize: 22),),
-          Text("Blog",style: TextStyle(fontSize: 22,color: Colors.blue),)
-        ],),
-        backgroundColor: Colors.transparent,
-        elevation: 10.0,
-      ),
-      body: BlogsList(),
-      floatingActionButton: Container(
-        padding: EdgeInsets.symmetric(vertical: 20),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: <Widget>[
-          FloatingActionButton(
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(
-                builder: (context){
-                 return CreateBlog();
+                   mainAxisAlignment: MainAxisAlignment.center,
+                   children: <Widget>[
+                             Text("Flutter",style: TextStyle(fontSize: 22),),
+                             Text("Blog",style: TextStyle(fontSize: 22,color: Colors.blue),)
+                                     ],
+                  ),
+                   backgroundColor: Colors.transparent,
+                   elevation: 10.0,
+                  ),
+        body: BlogsList(),
+         floatingActionButton: Container(
+           padding: EdgeInsets.symmetric(vertical: 20),
+           child: Row(
+             mainAxisAlignment: MainAxisAlignment.end,
+             children: <Widget>[
+               FloatingActionButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(
+                  builder: (context){
+                    return CreateBlog();
                 }
-              ));
+              )
+                              );
             },
-            child: Icon(Icons.add),
+                child: Icon(Icons.add),
           )
-        ],),
+        ],
+       ),
       ),
     );
   }
